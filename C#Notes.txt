@@ -1,0 +1,571 @@
+
+C# Notes:
+--------
+--------
+--------
+
+
+C# vs .NET
+CLR
+Architecture of .NET Application
+
+
+
+
+C# vs .NET
+---------
+C# is the programing language
+.NET is the framework for building application on windows
+.NET can be used by other programing as well
+
+
+
+
+CLR
+---
+Internally code wil converted into IL code (Intermediate code).
+Then it can be converted into native code which machine can understand
+CLR handle these things
+It takes care of conversion and running
+
+
+Architect of .NET application
+-----------------------------
+Application will have multiple classes
+It has functionality
+Class has data(Variable) and methods(Functionals)
+We have Namespace to organise the class
+Namespace can have multiple clases
+
+
+To create new project | First simple program
+----------------------
+Visual studio -> File -> new -> Project
+We can go template and see what the types of application (web,widows destop, cloud, workflow and many  etc)
+Here we can see the console application (without UI)
+We can select windows -> console application
+Give name of the project, location to save the project and solution. //In solution we can have multiple sub projects
+
+
+There are multiple shortcuts to handle run or multiple things
+
+
+We can find the properties which has AssemblyInfo.cs. This has information like license, copy right, company, config etc
+
+We can find references which has other assembly which is required for the project
+This will come as part of template when we create the project
+
+We can find App.config
+which has settings of the application
+
+Then we can find program.cs where we start writting the code
+
+By default, it will import System(for namespace), Generic(DB etc), Linq(list etc), Tasks (for multithreading)
+We can remove if we are not using
+
+Main will be the start execution point of the application
+
+
+C# is case sensitive
+Main should start with Upper case M
+
+Console  //used to read or print 
+//Console has multiple methods 
+
+
+Use below command to run the application
+----------------------
+Ctrl + F5
+
+------------------------
+
+
+Primitive datatype:
+-----------------
+
+Variables and Constants:
+-----------------------
+We can store the value in the variable
+Constant cannot change
+
+
+To declare variable
+int num
+int Number = 10;
+const float Pi = 3.14f
+
+
+It is better to use local variable in camel case. Eg: int firstValue = 40
+For constant use pascal case. Eg: const int MaxValue = 30
+
+
+Below are most user primitive datatypes
+byte
+short
+int
+long
+float
+double
+decimal
+char
+bool
+
+Each has different value of bytes and range of min or max value
+For fload value we need to enter suffix f
+Eg: float value = 45.9f
+For decimal we have give m
+Eg: decimal value = 56.5m
+
+
+int number = 2;
+int totalPrice = 30.56f
+char nm = 'c';
+bool isWorking = true
+string name = "Ram"  // This is non primitive
+
+For use var also for defining variable
+var num = 56;
+
+--------------------
+
+Non primitive types
+-------------------
+
+String
+Array
+Enum
+Class
+
+
+
+----------------------
+
+Overflowing
+-----------
+
+when we increase or decrease the limit of range of datatype, it will give 0. C# wont check of overflow by default
+
+Eg:
+byte number = 255; //255 is the largest number in byte type
+number = number + 1  // Now the value will be 0
+
+For avoiding overflow, we need to use the checked block
+
+checked 
+{
+	byte number = 255;
+	number = number + 1
+}
+//Here it will throw exception
+
+------------------------------
+
+Scope
+-----
+Variable/constant declared under block can be used in the block or child
+Variable/constanct declared in the child block cannot be used in parent block
+Similar to java
+
+
+
+
+-----------------------------
+
+Printing
+--------
+
+
+Console.WriteLine("Hello world");     //This is for printing
+
+
+
+
+-------------------------
+
+To compile the application in visual studio:
+Ctrl + Shift + B
+
+To run the application:
+Ctrl + F5
+
+
+--------------------------
+
+Visual studio will show all keywords in blue
+For short cut to console write
+ws then press tab, it will add Console.WriteLine(); There are many shortcuts
+Press tab to complete auto complete wth suggested word/code
+
+
+
+
+
+---------------------------
+
+
+Note:
+-----
+Before using any variable, we should assign value for the variable 
+
+
+
+----------
+
+We can give var to declare variable, it will take the datatype based on value
+
+var num = 50;
+var name = "Ram"
+
+
+We hover on the var keyword and press enter, it will open object browser
+It will show the datatype.
+It will show all classes available in the .NET framework
+We can see all the methods also in the object browser
+We can also see all namespace
+
+
+
+-----------
+
+Ctrl + X is to delete the line
+
+
+----------
+
+Printing and passing variable in printing console
+--------------------------------------------------
+
+
+Console.WriteLine("{0} {1}", byte.MinValue, byte.MaxValue);
+
+---------------
+
+We cannot change the values of the const variable
+
+
+---------------
+
+type casting or type conversion
+-------------------------------
+
+1. Implicit type conversion
+2. Explicit type conversion
+3. Conversion between non-compatible types
+
+Eg:
+byte b = 1;
+int i = b;   // This is implicit type conversion
+//Able to convert. Here interger is more byte and byte is less than int. So no problem here. It will convert
+
+Eg:
+int j = 78;
+float k = j;  //This is implicit type conversion
+//This is also possible as float has more byte than integer
+
+Eg:
+int i = 90;
+byte b = i;
+//Not possible. because int is more byte than byte. There are chances o data loses
+For this we need to give like below
+byte b =(byte)i;   //This should work. This is explict type conversion
+
+Eg:
+float val = 1.0f;
+int i = (int)val;  //This is explicit type conversion
+
+Eg: For converting for different types
+string s = "1";
+int i = Convert.ToInt32(s);
+(or)
+int j = int.Parse(s)
+
+To convert:
+ToByte() - to convert to byte
+ToInt16() - to convert to short
+ToInt32() - to convert to int
+ToInt64() - to convert to long
+
+---------------
+
+
+Many of the default things are imported from System;
+Console
+Convert
+
+---------------
+
+Example:
+using System;
+namespace MySpace
+{
+  class MyProgram
+  {
+     static void Main(string[] args)
+     {
+	var number = "1234";
+        int i = Convert.ToInt32(number);
+        Console.WriteLine(i);
+     }
+  }
+}
+
+
+
+---------------
+
+try catch:
+---------
+
+try
+{
+
+}
+catch (Exception)
+{
+
+}
+
+--------------
+
+Operators:
+----------
+Arithmetic Operators: + - * / % a++ ++a a-- --a
+Comparison Operators: == != > >= < <=
+Assignment Operators: = += -= *= /=
+Logical Operators: && || !
+Bitwist Operators: & |
+
+
+
+
+---------------
+
+Arithmetic example
+---
+var a = 10
+var b = 3
+var c = a + b;
+var d = a - b;
+var e = a * b;
+var f = a / b;  //This result will be in int
+var g = (float) a / (float) b;   //This result will be in float.
+var h = a + b * c;   //This works similar to maths. Multiple/devision first then add/sub next // a + (b * C)
+var k = (a + b) * c;
+
+---
+
+Comparision example:
+
+var a = 1;
+var b = 2;
+var c = a == b;  //False
+var d = b > a; //True
+var e = a != b //True
+
+---
+
+Logical:
+
+var a = 10;
+var b = 23;
+var c = 9;
+
+var k = a < b && b > 9;  //true
+var d = b <= a || b >=c;  //true
+
+
+-----------
+
+Comments:
+--------
+We add command with doube slask
+Eg:
+// This is a command
+
+We can multiline commands with /* comments */
+/*
+This has
+multiple commands
+*/
+
+--------
+
+
+How to debug in visual studio:
+-----------------------------
+We ca put breakpoint and run to debug mode
+By pressing F9 we can put the breakpoint.
+F5 to run in debug mode
+F10 - step over
+F11 - step into
+Shift + F1 - step out
+shift + F5 - to stop the debug mode
+
+
+
+Debug -> windows -> watch - watch1
+We can add the variable name which we want to watch the values everytime
+This will show the value of given variable everytime
+The changed value will be shown in red
+
+
+Debug -> Delete all breakpoint
+Debug -> Disable all breakpoint
+
+Debug -> Windows -> Breakpoints
+
+Ctrl + Shift + F5 - For restarting the application
+
+Debug -> Windows -> call stack - Shows the current methods and parent methods
+
+
+Debug -> Windows -> Autos  //Similar to watch. But it automatically show the variable and values. We dont need to add manually
+Debug -> Windows -> Locals //It is similar to autos. But it shows only the current local variable and values
+
+
+--------
+
+while
+foreach Eg: foreach(var num in list)
+
+
+var nums = new List<int> {5, 81, 45};
+
+-----------
+
+To throw exception
+------------------
+throw new ExceptionType("Give Message here");
+Eg:
+throw new ArgumentNullException("count", "Count should not less than 0")
+
+---------------
+
+
+Classes
+------
+
+Application can have multiple applications
+
+
+Class has two things
+Data (Variables)
+Behaviour (Methods/functions)
+
+Simular to other language
+
+Example:
+
+public class Person
+{
+  public string Name;
+  
+  public void Introduce()
+  {
+    Console.WriteLine("Hi, My name is " + Name);
+  }
+}
+
+
+To create object:
+
+Person person = new Person();
+
+or 
+
+var person = new Person();
+
+person.Name = "Ram"
+person.Introduce();
+
+
+We can call methods using the object
+If we use static method, we can directly call via class itself
+
+Using static keyword, we can create static variable or method
+Eg:
+public static int PeopleCount = 0;
+
+
+Example:
+using System
+namespace Classes
+{
+  public class Person
+  {
+    public string Name;
+    public void Introduce(string to)
+    {
+      Console.WriteLine("Hi {0}, I am {1}", to, Name);
+    }
+  }
+
+  class Program
+  {
+    static void main(string[] args)
+    {
+       var person = new Person();
+       person.Name = "John";
+       person.Introduce();
+    }
+  }
+}
+
+
+Example 2:
+
+using System
+namespace Classes
+{
+  public class Person
+  {
+    public string Name;
+    public void Introduce(string to)
+    {
+      Console.WriteLine("Hi {0}, I am {1}", to, Name);
+    }
+
+    public static Person Parse(string str)
+    {
+       var person = new Person();
+       person.Name = str;
+       return person;
+    }
+  }
+
+  class Program
+  {
+    static void main(string[] args)
+    {
+       var person = Person.Parse("John");
+       person.Introduce();
+    }
+  }
+}
+
+
+
+
+
+
+
+----------------
+
+
+Link of tutorial:
+-----------------
+https://www.youtube.com/watch?v=gfkTfcpWqAY&list=PLTjRvDozrdlz3_FPXwb6lX_HoGXa09Yef
+
+---------------------
+
+
+
+
+
+
+
+
+
+
+
+
