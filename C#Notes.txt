@@ -543,6 +543,92 @@ namespace Classes
   }
 }
 
+-----------------
+
+
+Constructor
+------------
+It should be same name as like class
+It wont have return type
+We will use while initializing object
+
+Eg:
+public class Customer
+{
+ public string Name;
+ public Customer()
+ {
+ }
+}
+
+
+constructor with parameter:
+
+Eg:
+public class Customer
+{
+ public string Name;
+ public Customer(string name)  
+ {
+  this.Name = name;
+ }
+}
+
+
+Constructor overloading:
+We can have multiple constructor with different parameters etc
+Eg:
+public class Customer
+{
+ public Customer()
+ {
+ }
+
+ public Customer(string name)
+ {
+ 
+ }
+
+ public Customer(int id, string name)
+ {
+
+ }
+}
+
+
+If we are not using the constructor, it will use default constructor
+
+
+To call constructor from other constructor we can use below line under constructor
+: this()
+
+
+Eg:
+public class Customer
+{
+ public int Id;
+ public string Name;
+ public List<Order> order;
+ public Customer()
+ {
+  order = new List<Order>();
+ }
+
+ public Customer(string name)
+ : this()     //It will call above constructor
+ {
+  this.Name = name;
+ }
+
+ public Customer(int id, string name)
+ : this(name)  //It will call above constructor
+ {
+  this.Id = id;
+ }
+}
+
+
+
 
 
 
