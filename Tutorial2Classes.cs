@@ -18,7 +18,7 @@ namespace SampleC_Project
 
     public class Tutorial2Classes
     {
-        static void Main2(string[] args)
+        static void Main(string[] args)
         {
             Person person = new Person();
             person.Name = "John";
